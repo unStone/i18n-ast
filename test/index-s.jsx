@@ -1,1 +1,2 @@
-<a>{intl.get("6fuvhc85p4h").d("123\u53D6\u6D88\u517C\u5C97")}</a>;
+<a>{intl.get("xq5kjvg2ds").d('取消兼岗')}</a>;
+var a = intl.get("50lwfndclf3").d('你好');

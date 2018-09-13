@@ -9,7 +9,6 @@ var {
 } = translateTo(filePath())
 console.log('ast', ast)
 
-const output = generator.default(ast.ast,);
+const output = generator.default(ast.ast);
 console.log('output', output)
 fs.writeFileSync(filePath('-s'), output.code, { encoding: "utf-8" })
-
