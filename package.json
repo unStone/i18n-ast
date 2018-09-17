@@ -19,7 +19,6 @@
     "glob": "^7.1.3"
   },
   "devDependencies": {
-    "@babel/template": "^7.0.0",
     "babel-plugin-mickey-i18n": "^1.0.0",
     "babel-plugin-syntax-async-generators": "^6.13.0",
     "babel-plugin-syntax-class-properties": "^6.13.0",
@@ -31,10 +30,6 @@
     "babel-plugin-syntax-function-bind": "^6.13.0",
     "babel-plugin-syntax-function-sent": "^6.13.0",
     "babel-plugin-syntax-jsx": "^6.18.0",
-    "babel-plugin-syntax-object-rest-spread": "^6.13.0",
-    "babel-plugin-transform-decorators-legacy": "^1.3.5",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1"
+    "babel-plugin-syntax-object-rest-spread": "^6.13.0"
   }
 }

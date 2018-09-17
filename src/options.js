@@ -51,6 +51,5 @@ module.exports = function parseArgv(args) {
     }
   })
   
-  // mkdirp.sync(program.entry)
   return options
 }
