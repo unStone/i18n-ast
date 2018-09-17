@@ -31,4 +31,5 @@ module.exports = {
   'hs8mvdhih6u': '职级：',
   '0uune0agzuhf': '部门：',
   '8u5badke7sv': '岗位：',
+  'gurcf4h2j09': 'test ',
 }

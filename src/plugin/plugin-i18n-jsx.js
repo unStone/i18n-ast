@@ -54,6 +54,7 @@ function reactPlugin (allTranslateWord) {
     }
     return null;
   }
+
   const plugin = function ({ types: t }) {
     return {
     visitor: {
@@ -102,6 +103,11 @@ function reactPlugin (allTranslateWord) {
         }
       },
       TemplateLiteral(path) {
+        console.log('path', path.node.quasis)
+        if(path.node.quasis.every(word => !judgeChinese(word))) {
+          path.skip();
+          return
+        }
         const tempArr = [].concat(path.node.quasis, path.node.expressions).sort(function(a,b){
           return a.start - b.start;
         })
