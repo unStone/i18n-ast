@@ -1,12 +1,20 @@
 {
   "name": "i18n-ast",
-  "version": "1.0.0",
+  "version": "0.1.1",
   "description": "",
   "main": "bin/index.js",
   "scripts": {
     "test": "jest --color"
   },
-  "author": "",
+  "author": {
+    "name": "ssstone",
+    "email": "386159234@qq.com"
+  },
+  "keywords": [
+    "in18",
+    "javascript",
+    "ast"
+  ],
   "license": "ISC",
   "dependencies": {
     "@babel/types": "^7.0.0",
@@ -31,5 +39,8 @@
     "babel-plugin-syntax-jsx": "^6.18.0",
     "babel-plugin-syntax-object-rest-spread": "^6.13.0",
     "jest": "^23.6.0"
+  },
+  "bin": {
+    "i18n-ast": "./bin/index.js"
   }
 }
