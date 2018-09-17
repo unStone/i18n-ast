@@ -1,5 +1,5 @@
-module.exports = () => ({
-  entry: "example",
-  output: "tet",
+module.exports = {
+  entry: "t",
+  output: "u",
   exclude: ['*-*.jsx']
-})
+}

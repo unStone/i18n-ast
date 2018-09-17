@@ -4,6 +4,7 @@
   "description": "",
   "main": "bin/index.js",
   "scripts": {
+    "start": "node bin/index.js",
     "test": "jest --color"
   },
   "author": {

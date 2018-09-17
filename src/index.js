@@ -31,7 +31,7 @@ if(fs.existsSync(`${output}/zh_CN.js`)) {
 
 const translateFiles = file.getFiles({
   path: entry,
-  exclude: exclude,
+  exclude,
 })
 
 // 收集翻译单词 替换词语
