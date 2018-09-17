@@ -36,3 +36,21 @@ module.exports = () => ({
   randomFuc: (filePath) => `${filePath.split('/').pop()}-${Math.random()}`
 })
 ```
+
+## Todo List
+- [ ] 替换情况
+  - js
+    - [x] 对象中的中文字符串
+    - [x] 方法中的中文传参
+    - [x] 模板字符串（包含简单变量）
+  - react
+    - [x] react中的中文属性
+    - [x] react中的中文内容
+  - vue（待补充）
+- [ ] excel
+  - [ ] 翻译词条文件转换为 excel
+  - [ ] excel 转换为翻译文件
+- [ ] 需替换情况收集
+- [ ] 判断是否引入模块，没有则自动引入
+- [ ] 替换方法可自定义
+- [ ] 引入自动翻译，翻译简单词条（atool-i10n）

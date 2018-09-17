@@ -2,9 +2,12 @@ const fs = require('fs');
 const babel = require("babel-core");
 const generator = require('babel-generator')
 
+const middleRandomStr = (function(randomStr, ...argu) {
+  return () => randomStr(...argu)
+})
+
 function translate ({filePath, option, allTranslateWords, randomStr}) {
-  const middleRandomStr = () => randomStr(filePath)
-  const plugin = require('./plugin/plugin-i18n-jsx')(allTranslateWords, middleRandomStr);
+  const plugin = require('./plugin/plugin-i18n-jsx')(allTranslateWords, middleRandomStr(randomStr, filePath));
 
   const transformOptions = {
     sourceType: "module",
