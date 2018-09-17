@@ -71,9 +71,9 @@ function reactPlugin (allTranslateWord) {
       CallExpression(path) {
         // 跳过 intl.get() 格式
         if (path.node.callee.type === "MemberExpression") {
-          if(path.node.callee.object.name === "intl") path.skip();
-          if(path.node.callee.object.callee && path.node.callee.object.callee.type === 'MemberExpression') {   
-            if(path.node.callee.object.name === "intl") path.skip();
+          if(path.node.callee.property.name === "d") {
+            path.skip()
+            return;
           }
         }
       },

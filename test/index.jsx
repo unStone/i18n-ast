@@ -1,2 +1,2 @@
-<a>{intl.get("ojg3uhh6kud").d(intl.get("ojg3uhh6kud").d(intl.get("ojg3uhh6kud").d(intl.get("ot7lo3qf5wi").d('取消兼岗'))))}</a>;
-var a = intl.get("r45h3sbz0pb").d(intl.get("r45h3sbz0pb").d(intl.get("r45h3sbz0pb").d(intl.get("7jiojs2d4fv").d('你好你好你好'))));
+<a>{intl.get("ot7lo3qf5wi").d('取消兼岗')}</a>;
+var a = intl.get("7jiojs2d4fv").d('你好你好你好');
