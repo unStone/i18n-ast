@@ -1,8 +1,6 @@
 const t = require('@babel/types');
 
-function reactPlugin (allTranslateWord) {
-  const randomStr = () => Math.random().toString(36).substr(2);
-
+function reactPlugin (allTranslateWord, randomStr) {
   function baseType (v) {
     return Object.prototype.toString.call(v)
   }
@@ -103,7 +101,6 @@ function reactPlugin (allTranslateWord) {
           }
         },
         TemplateLiteral(path) {
-          console.log('path', path.node.quasis)
           if(path.node.quasis.every(word => !judgeChinese(word))) {
             path.skip();
             return

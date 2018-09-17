@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --color"
   },
   "author": "",
   "license": "ISC",
@@ -30,6 +30,7 @@
     "babel-plugin-syntax-function-bind": "^6.13.0",
     "babel-plugin-syntax-function-sent": "^6.13.0",
     "babel-plugin-syntax-jsx": "^6.18.0",
-    "babel-plugin-syntax-object-rest-spread": "^6.13.0"
+    "babel-plugin-syntax-object-rest-spread": "^6.13.0",
+    "jest": "^23.6.0"
   }
 }

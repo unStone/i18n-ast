@@ -1,12 +1,11 @@
 const fs = require('fs');
 const babel = require("babel-core");
 const generator = require('babel-generator')
-const chalk = require('./chalk')
 
-function translate ({filePath, option, allTranslateWords}) {
+function translate ({filePath, option, allTranslateWords, randomStr}) {
   const {
     plugin
-  } = require('./plugin/plugin-i18n-jsx')(allTranslateWords);
+  } = require('./plugin/plugin-i18n-jsx')(allTranslateWords, randomStr);
 
   const transformOptions = {
     sourceType: "module",
@@ -20,8 +19,7 @@ function translate ({filePath, option, allTranslateWords}) {
     plugin]
   }
   const output = generator.default(babel.transformFileSync(filePath, option || transformOptions).ast);
-  fs.writeFileSync(`${filePath}`, output.code, { encoding: "utf-8" })
-  chalk.success(`${filePath} is success`)
+  return output;
 }
 
 module.exports = translate;

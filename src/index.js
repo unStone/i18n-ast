@@ -3,9 +3,11 @@ const mkdirp = require("mkdirp");
 const parseArgv = require("./options");
 const file = require('./file');
 const translate = require('./translate');
-// const chalk = require('./chalk')
+const chalk = require('./chalk')
 
-const { entry, output, exclude} = parseArgv(process.argv);
+const randomStr = () => Math.random().toString(36).substr(2);
+
+const { entry, output, exclude, randomFuc } = parseArgv(process.argv);
 let allTranslateWords = {};
 
 if(!fs.existsSync(output)) {
@@ -26,17 +28,21 @@ if(fs.existsSync(`${output}/zh_CN.js`)) {
   }
   Object.assign(allTranslateWords, defaultWords);
 }
+
 const translateFiles = file.getFiles({
   path: entry,
   exclude: exclude,
 })
 
 // 收集翻译单词 替换词语
-translateFiles.forEach(t => {
-  translate({
-    filePath: t,
-    allTranslateWords
+translateFiles.forEach(filePath => {
+  const output = translate({
+    filePath,
+    allTranslateWords,
+    randomStr: randomFuc || randomStr
   })
+  fs.writeFileSync(`${filePath}`, output.code, { encoding: "utf-8" })
+  chalk.success(`${filePath} is success`)
 })
 
 let outputString = 'module.exports = {\n';

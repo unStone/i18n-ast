@@ -1,5 +1,5 @@
 module.exports = () => ({
-  entry: "test",
+  entry: "example",
   output: "tet",
   exclude: ['*-*.jsx']
 })

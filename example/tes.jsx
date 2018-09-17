@@ -134,7 +134,7 @@ class WList extends Component {
       console.log('dedede', res);
       if (!res || res.code !== 200) return message.error(res.message);
       this.updateList();
-      return message.success(intl.get("6784kmyhsfp").d('操作成功'));
+      return message.success(intl.get("ai7fr28sdg").d('操作成功'));
     });
   };
 
@@ -305,7 +305,7 @@ class WList extends Component {
     const { record } = this.state;
     deletesecondPosition({ id: r.id }).then(res => {
       if (res && res.code === 200) {
-        message.success(intl.get("6784kmyhsfp").d('操作成功'));
+        message.success(intl.get("ai7fr28sdg").d('操作成功'));
         getSecondPosition({ employeeId: record.employeeId }).then(ress => {
           if (!ress || ress.code !== 200) return message.warning(res.message);
           const { data } = ress;
@@ -314,7 +314,7 @@ class WList extends Component {
           });
         });
       } else {
-        message.success(intl.get("tx5lz22drw").d('操作失败'));
+        message.success(intl.get("alew2duwai4").d('操作失败'));
       }
     });
   };
@@ -456,7 +456,7 @@ class WList extends Component {
     leavePositionOfJob(params).then(res => {
       if (!res || res.code !== 200) return message.error(res.message);
       this.updateList();
-      return message.success(intl.get("6784kmyhsfp").d('操作成功'));
+      return message.success(intl.get("ai7fr28sdg").d('操作成功'));
     });
   };
 
@@ -464,7 +464,7 @@ class WList extends Component {
     aginInToJob(params).then(res => {
       if (!res || res.code !== 200) return message.error(res.message);
       this.updateList();
-      return message.success(intl.get("6784kmyhsfp").d('操作成功'));
+      return message.success(intl.get("ai7fr28sdg").d('操作成功'));
     });
   };
 
@@ -472,7 +472,7 @@ class WList extends Component {
     transferPosition(params).then(res => {
       if (!res || res.code !== 200) return message.error(res.message);
       this.updateList();
-      return message.success(intl.get("6784kmyhsfp").d('操作成功'));
+      return message.success(intl.get("ai7fr28sdg").d('操作成功'));
     });
   };
 
@@ -480,7 +480,7 @@ class WList extends Component {
     adjustJobLevel(params).then(res => {
       if (!res || res.code !== 200) return message.error(res.message);
       this.updateList();
-      return message.success(intl.get("6784kmyhsfp").d('操作成功'));
+      return message.success(intl.get("ai7fr28sdg").d('操作成功'));
     });
   };
 
@@ -633,27 +633,27 @@ class WList extends Component {
 
     const content = getRecord => {
       const dimission = <Authorized authority={["hr_person_resignation"]} noMatch={null}>
-          <i title={intl.get("t2co6q0o7ao").d('离职')} className="iconfont icon-lizhi2" onClick={() => this.optsAction(getRecord, 'dimission')} />
+          <i title={intl.get("do0zuhgmorf").d('离职')} className="iconfont icon-lizhi2" onClick={() => this.optsAction(getRecord, 'dimission')} />
         </Authorized>;
 
       const transfer = <Authorized authority={["hr_person_transferLevel"]} noMatch={null}>
-          <i title={intl.get("5p8aurkzdxw").d('调岗')} className="iconfont icon-tiaoxintiaogang1" onClick={() => this.optsAction(getRecord, 'transfer')} />
+          <i title={intl.get("674qzr6fgbd").d('调岗')} className="iconfont icon-tiaoxintiaogang1" onClick={() => this.optsAction(getRecord, 'transfer')} />
         </Authorized>;
 
       const jobRelocation = <Authorized authority={["hr_person_transferPosition"]} noMatch={null}>
-          <i title={intl.get("9779jzooru7").d('调职级')} className="iconfont icon-tiaoxian" onClick={() => this.optsAction(getRecord, 'jobRelocation')} />
+          <i title={intl.get("uq3e8to9jl").d('调职级')} className="iconfont icon-tiaoxian" onClick={() => this.optsAction(getRecord, 'jobRelocation')} />
         </Authorized>;
 
       const partTimeJob = <Authorized authority={["hr_person_concurrentPosition"]} noMatch={null}>
-          <i title={intl.get("oehuaxxrro9").d('兼岗')} className="iconfont icon-jiangangjiangangrenyuan" onClick={() => this.optsAction(getRecord, 'partTimeJob')} />
+          <i title={intl.get("zac1c8yx2af").d('兼岗')} className="iconfont icon-jiangangjiangangrenyuan" onClick={() => this.optsAction(getRecord, 'partTimeJob')} />
         </Authorized>;
 
       const regular = <Authorized authority={["hr_person_regular"]} noMatch={null}>
-          <i title={intl.get("mvwjkvbv6j").d('转正式')} className="iconfont icon-zhuanzheng1" onClick={() => this.optsAction(getRecord, 'regular')} />
+          <i title={intl.get("m8wezusee6i").d('转正式')} className="iconfont icon-zhuanzheng1" onClick={() => this.optsAction(getRecord, 'regular')} />
         </Authorized>;
 
       const againIn = <Authorized authority={["hr_person_reentry"]} noMatch={null}>
-          <i title={intl.get("ad479i3swg5").d('再入职')} className="iconfont icon-zairuzhi1" onClick={() => this.optsAction(getRecord, 'againIn')} />
+          <i title={intl.get("qr2yzig0479").d('再入职')} className="iconfont icon-zairuzhi1" onClick={() => this.optsAction(getRecord, 'againIn')} />
         </Authorized>;
 
       const formalOpt = <span className={styles.formalOpt}>
@@ -683,7 +683,7 @@ class WList extends Component {
     };
 
     const columns = [{
-      title: intl.get("hi0bxpmu95").d('姓名'),
+      title: intl.get("uyv2z32u19i").d('姓名'),
       dataIndex: 'employeeName',
       key: 'employeeName',
       width: '9%',
@@ -698,7 +698,7 @@ class WList extends Component {
       key: 'nip',
       width: '8%'
     }, {
-      title: intl.get("mcyf52az8ip").d('聘用形式'),
+      title: intl.get("v6rdiw6l17j").d('聘用形式'),
       dataIndex: 'hireType',
       filters: hireType,
       filteredValue: filteredInfo.hireTypes || null,
@@ -713,7 +713,7 @@ class WList extends Component {
         return <span>{str}</span>;
       }
     }, {
-      title: intl.get("x34ona9o2bq").d('部门'),
+      title: intl.get("xki42qvpse").d('部门'),
       dataIndex: 'deptName',
       key: 'deptName',
       width: '9%',
@@ -724,7 +724,7 @@ class WList extends Component {
         </div>,
       filterIcon: () => <Icon type="filter" style={{ color: treeSelectKeys.length ? '#108ee9' : '#aaa' }} />
     }, {
-      title: intl.get("dvkdri4medt").d('职业生涯'),
+      title: intl.get("uklebaxq6is").d('职业生涯'),
       dataIndex: 'careerName',
       key: 'careerName',
       filters: careerList,
@@ -732,12 +732,12 @@ class WList extends Component {
       width: '9%',
       filterIcon: filtered => <Icon type="filter" style={{ color: filtered ? '#108ee9' : '#aaa' }} />
     }, {
-      title: intl.get("7gqivgh63k6").d('职级'),
+      title: intl.get("63dyj4iazr").d('职级'),
       dataIndex: 'jobLevelName',
       key: 'jobLevelName',
       width: '9%'
     }, {
-      title: intl.get("0ovxmdgm78qc").d('岗位'),
+      title: intl.get("uaq08gy2q9b").d('岗位'),
       dataIndex: 'positionName',
       key: 'positionName',
       width: '9%',
@@ -745,7 +745,7 @@ class WList extends Component {
       filteredValue: filteredInfo.positionName || null,
       filterIcon: filtered => <Icon type="filter" style={{ color: filtered ? '#108ee9' : '#aaa' }} />
     }, {
-      title: intl.get("v7q9eay06zo").d('入职日期'),
+      title: intl.get("db16ul035tb").d('入职日期'),
       dataIndex: 'entryDate',
       key: 'entryDate',
       filterDropdown: () => {
@@ -759,7 +759,7 @@ class WList extends Component {
         return <span>{moment(text).format(dateFormat)}</span>;
       }
     }, {
-      title: intl.get("vtetx87sah").d('在职状态'),
+      title: intl.get("xrwplvjyol").d('在职状态'),
       dataIndex: 'isLeft',
       key: 'isLeft',
       filters: jobStatus,
@@ -769,12 +769,12 @@ class WList extends Component {
       render: text => {
         let str;
         jobStatus.forEach(item => {
-          if (item.value === text) str = intl.get("1jqxqce0cr9").d('你你你');
+          if (item.value === text) str = intl.get("2dgqmoj4sgs").d('你你你');
         });
         return <span>{str}</span>;
       }
     }, {
-      title: intl.get("5yujujptbwr").d('操作'),
+      title: intl.get("ul2fwxw6v4").d('操作'),
       dataIndex: 'opts',
       key: 'opts',
       width: 180,
@@ -783,27 +783,27 @@ class WList extends Component {
       }
     }];
     const columnsJob = [{
-      title: intl.get("zpsl7fst7z8").d('组织机构'),
+      title: intl.get("vgnb0h26ek").d('组织机构'),
       dataIndex: 'orgName',
       key: 'orgName'
     }, {
-      title: intl.get("x34ona9o2bq").d('部门'),
+      title: intl.get("xki42qvpse").d('部门'),
       dataIndex: 'deptName',
       key: 'deptName'
     }, {
-      title: intl.get("0ovxmdgm78qc").d('岗位'),
+      title: intl.get("uaq08gy2q9b").d('岗位'),
       dataIndex: 'positionName',
       key: 'positionName'
     }, {
-      title: intl.get("hk7b73or3al").d('直接上级'),
+      title: intl.get("4shk0odupgm").d('直接上级'),
       dataIndex: 'directLeaderName',
       key: 'directLeaderName'
     }, {
-      title: intl.get("glysat5y8la").d('主管人员'),
+      title: intl.get("y0bihnqr16o").d('主管人员'),
       dataIndex: 'chargerName',
       key: 'chargerName'
     }, {
-      title: intl.get("rzq08rbxynj").d('生效日期'),
+      title: intl.get("khcn20jfju").d('生效日期'),
       dataIndex: 'effectiveDate',
       key: 'effectiveDate',
       render: text => {
@@ -811,22 +811,22 @@ class WList extends Component {
         return <span>{moment(text).format(dateFormat)}</span>;
       }
     }, {
-      title: intl.get("5yujujptbwr").d('操作'),
+      title: intl.get("ul2fwxw6v4").d('操作'),
       dataIndex: 'opts',
       key: 'opts',
       render: (text, recordData) => {
-        return <Popconfirm title={intl.get("r3qleqffanh").d('确定要取消兼岗吗?')} onConfirm={() => this.cancelPartTimeJob(recordData)}>
-            <span><a className={styles.optsAction}>{intl.get("ojg3uhh6kud").d('取消兼岗')}</a></span>
+        return <Popconfirm title={intl.get("hemzahkbzar").d('确定要取消兼岗吗?')} onConfirm={() => this.cancelPartTimeJob(recordData)}>
+            <span><a className={styles.optsAction}>{intl.get("dlxefdlz9sl").d('取消兼岗')}</a></span>
           </Popconfirm>;
       }
     }];
     const modalTitle = {
-      regular: intl.get("mvwjkvbv6j").d('转正式'),
-      transfer: intl.get("5p8aurkzdxw").d('调岗'),
-      dimission: intl.get("t2co6q0o7ao").d('离职'),
-      againIn: intl.get("ad479i3swg5").d('再入职'),
-      jobRelocation: intl.get("9779jzooru7").d('调职级'),
-      partTimeJob: intl.get("oehuaxxrro9").d('兼岗')
+      regular: intl.get("m8wezusee6i").d('转正式'),
+      transfer: intl.get("674qzr6fgbd").d('调岗'),
+      dimission: intl.get("do0zuhgmorf").d('离职'),
+      againIn: intl.get("qr2yzig0479").d('再入职'),
+      jobRelocation: intl.get("uq3e8to9jl").d('调职级'),
+      partTimeJob: intl.get("zac1c8yx2af").d('兼岗')
     };
     const getFormByType = formType => {
       if (formType === 'regular') return <Regular getIdOfPositionInfo={this.getIdOfPositionInfo} record={record} form={form} getFieldDecorator={form.getFieldDecorator} />;
@@ -836,7 +836,7 @@ class WList extends Component {
       if (formType === 'jobRelocation') return <JobRelocation form={form} record={record} getFieldDecorator={form.getFieldDecorator} />;
       if (formType === 'partTimeJob') {
         return addPartTimeJob ? <PartTimeJob getIdOfPositionInfo={this.getIdOfPositionInfo} form={form} getFieldDecorator={form.getFieldDecorator} /> : <div style={{ paddingBottom: 50 }}>
-              <Button style={{ marginBottom: 10 }} type="primary" onClick={this.addPartTimeJob}>{intl.get("eevom8t050n").d('新增兼岗')}</Button>
+              <Button style={{ marginBottom: 10 }} type="primary" onClick={this.addPartTimeJob}>{intl.get("yzyrxqt96r").d('新增兼岗')}</Button>
               <div className={styles.partTimeJobTable}>
                 <Table dataSource={secondPosition} size="middle" pagination={false} columns={columnsJob} />
               </div>
@@ -857,14 +857,14 @@ class WList extends Component {
         <HRPagination currentPage={currentPage} pageSize={pageSize} listTotal={newData.totalCount} onChange={(page, size) => {
         this.paginationChange(page, size);
       }} />
-        <Modal visible={visible} title={modalTitle[modalType]} onOk={this.submitForm.bind(this)} width={1200} onCancel={this.handleCancel} footer={!addPartTimeJob && modalType === 'partTimeJob' ? null : [<Button className={styles.submitModal} key="submit" type="primary" onClick={this.submitForm.bind(this)}>{intl.get("p5sufaq4bqj").d('提交')}</Button>, <Button className={styles.submitModal} style={{ marginLeft: 15 }} key="back" onClick={this.handleCancel}>{intl.get("goyc63rw5cp").d('关闭')}</Button>]}>
+        <Modal visible={visible} title={modalTitle[modalType]} onOk={this.submitForm.bind(this)} width={1200} onCancel={this.handleCancel} footer={!addPartTimeJob && modalType === 'partTimeJob' ? null : [<Button className={styles.submitModal} key="submit" type="primary" onClick={this.submitForm.bind(this)}>{intl.get("633a6mskplb").d('提交')}</Button>, <Button className={styles.submitModal} style={{ marginLeft: 15 }} key="back" onClick={this.handleCancel}>{intl.get("gtwobu08cfw").d('关闭')}</Button>]}>
           {record ? <Row className={styles.userInfoTitle} type="flex" justify="space-between">
                 <Col span={3} className={styles.userName}>{record.employeeName}</Col>
-                <Col span={7}>{intl.get("ev6j5wxf6ai").d('职业生涯：')}{record.careerName}</Col>
-                <Col span={7}>{intl.get("n9i1op2m9v").d('职级：')}{record.jobLevelName}</Col>
+                <Col span={7}>{intl.get("usmxu6z8fqm").d('职业生涯：')}{record.careerName}</Col>
+                <Col span={7}>{intl.get("6omwoqadynl").d('职级：')}{record.jobLevelName}</Col>
                 <Col span={7}>{modalType === 'againIn' ? `离职日期：${moment(leaveDate).format(dateFormat)}` : `入职日期：${moment(record.entryDate).format(dateFormat)}`} </Col>
-                <Col offset={3} span={7}>{intl.get("z1mk01vkzyh").d('部门：')}{record.deptName}</Col>
-                <Col span={7}>{intl.get("4r0bbjru204").d('岗位：')}{record.positionName}</Col>
+                <Col offset={3} span={7}>{intl.get("cpagmjor76m").d('部门：')}{record.deptName}</Col>
+                <Col span={7}>{intl.get("pbjg4wptj5").d('岗位：')}{record.positionName}</Col>
                 <Col span={7} />
               </Row> : null}
           
