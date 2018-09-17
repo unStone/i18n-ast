@@ -1,51 +1,61 @@
-const randomStr = () => Math.random().toString(36).substr(2);
+const t = require('@babel/types');
 
-function baseType (v) {
-  return Object.prototype.toString.call(v)
-}
+function reactPlugin (allTranslateWord) {
+  const randomStr = () => Math.random().toString(36).substr(2);
 
-function judgeChinese(text) {
-  return /[\u4e00-\u9fa5]/.test(text);
-}
-
-function makeReplace({value, random, variableObj}) {
-  // 用于防止中文转码为 unicode
-  const v = Object.assign(t.StringLiteral(value), {
-    extra: {
-      raw: `\'${value}\'`,
-      rawValue: value,
-    }
-  })
-  return t.CallExpression(
-    t.MemberExpression(
-      t.CallExpression(
-        t.MemberExpression(
-          t.Identifier("intl"),
-          t.Identifier("get")
-        ),
-        setObjectExpression(variableObj) ? [t.StringLiteral(random || randomStr()), setObjectExpression(variableObj)] : [t.StringLiteral(random || randomStr())]
-      ),
-      t.Identifier("d"),
-    ),
-    [v]
-  );
-}
-
-function setObjectExpression(obj) {
-  if(baseType(obj) === '[object Object]') {
-    const ObjectPropertyArr = [];
-    for(const o in obj) {
-      ObjectPropertyArr.push(
-        t.ObjectProperty(t.Identifier(o), t.Identifier(obj[o]))
-      )
-    }
-    return t.ObjectExpression(ObjectPropertyArr)
+  function baseType (v) {
+    return Object.prototype.toString.call(v)
   }
-  return null;
-}
 
-function reactPlugin ({ types: t }) {
-  return {
+  function judgeChinese(text) {
+    return /[\u4e00-\u9fa5]/.test(text);
+  }
+
+  function makeReplace({value, random, variableObj}) {
+    let key = randomStr();
+    const val = value;
+    if(allTranslateWord[val]) {
+      key = allTranslateWord[val];
+    } else {
+      allTranslateWord[val] = key
+    }
+    
+    // 用于防止中文转码为 unicode
+    const v = Object.assign(t.StringLiteral(value), {
+      extra: {
+        raw: `\'${value}\'`,
+        rawValue: value,
+      }
+    })
+    return t.CallExpression(
+      t.MemberExpression(
+        t.CallExpression(
+          t.MemberExpression(
+            t.Identifier("intl"),
+            t.Identifier("get")
+          ),
+          setObjectExpression(val) ? [t.StringLiteral(key), setObjectExpression(val)] : [t.StringLiteral(key)]
+        ),
+        t.Identifier("d"),
+      ),
+      [v]
+    );
+  }
+
+  function setObjectExpression(obj) {
+    if(baseType(obj) === '[object Object]') {
+      const ObjectPropertyArr = [];
+      for(const o in obj) {
+        ObjectPropertyArr.push(
+          t.ObjectProperty(t.Identifier(o), t.Identifier(obj[o]))
+        )
+      }
+      return t.ObjectExpression(ObjectPropertyArr)
+    }
+    return null;
+  }
+  const plugin = function ({ types: t }) {
+    return {
     visitor: {
       JSXText(path) {
         const { node } = path;
@@ -125,9 +135,14 @@ function reactPlugin ({ types: t }) {
           variableObj: variable,
         }));
         path.skip();
-      }
+      },
     }
-  };
+    };
+  }
+
+  return {
+    plugin
+  }
 }
 
 module.exports = reactPlugin
