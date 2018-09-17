@@ -1,5 +1,6 @@
 module.exports = {
   entry: "t",
   output: "u",
-  exclude: ['*-*.jsx']
+  exclude: ['*-*.jsx'],
+  randomFuc: (filePath) => filePath.split('/').pop()
 }

@@ -3,9 +3,8 @@ const babel = require("babel-core");
 const generator = require('babel-generator')
 
 function translate ({filePath, option, allTranslateWords, randomStr}) {
-  const {
-    plugin
-  } = require('./plugin/plugin-i18n-jsx')(allTranslateWords, randomStr);
+  const middleRandomStr = () => randomStr(filePath)
+  const plugin = require('./plugin/plugin-i18n-jsx')(allTranslateWords, middleRandomStr);
 
   const transformOptions = {
     sourceType: "module",

@@ -1,4 +1,3 @@
-// const test = require('jest');
 const translate = require('../src/translate');
 
 const getCode = (filePath) => {
@@ -18,6 +17,13 @@ const testObj = {
     path: 'example/js/funcArgu.js',
     toBe: `test(intl.get("1").d('测试'));`
   },
+  'template 转换': {
+    path: 'example/js/template.js',
+    toBe: 
+`var test = intl.get("1", {
+  test: test
+}).d('测试 {test} 测试 ');`
+  },
 
   'react 属性转换': {
     path: 'example/jsx/jsxAttribute.js',
@@ -27,12 +33,7 @@ const testObj = {
     path: 'example/jsx/jsxText.js',
     toBe: `<a>{intl.get("1").d('测试')}</a>;`
   },
-  // 'jsxTemplate 转换': {
-  //   path: 'example/jsx/jsxTemplate.js',
-  //   toBe: `<a>{intl.get("1", { test: test }).d(\`测试\${test}测试\`)}</a>;;`
-  // },
   
-
 }
 
 Object.keys(testObj).forEach(key => {

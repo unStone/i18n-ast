@@ -22,7 +22,7 @@ yarn add i18n-ast --dev
 
 1. 利用命令行
 ```sh
-  i18n-ast -e [path] -o [path]
+  i18n-ast -e [path] -o [path] -x [path]
 ```
 
 2. 在根目录下新建配置文件 i18n-ast.config.js
@@ -30,6 +30,9 @@ yarn add i18n-ast --dev
 module.exports = () => ({
   entry: "需要转换的文件路径",
   output: "输出的文件路径",
-  exclude: []//排除的文件（类型是数组）
+   //排除的文件（类型是数组） 
+  exclude: [],
+  //可以自定义随机字符串，第一个参数是当前文件的路径
+  randomFuc: (filePath) => `${filePath.split('/').pop()}-${Math.random()}`
 })
 ```

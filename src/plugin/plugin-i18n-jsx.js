@@ -9,7 +9,7 @@ function reactPlugin (allTranslateWord, randomStr) {
     return /[\u4e00-\u9fa5]/.test(text);
   }
 
-  function makeReplace({value, random, variableObj}) {
+  function makeReplace({value, variableObj}) {
     let key = randomStr();
     const val = value;
     if(allTranslateWord[val]) {
@@ -32,7 +32,7 @@ function reactPlugin (allTranslateWord, randomStr) {
             t.Identifier("intl"),
             t.Identifier("get")
           ),
-          setObjectExpression(val) ? [t.StringLiteral(key), setObjectExpression(val)] : [t.StringLiteral(key)]
+          setObjectExpression(variableObj) ? [t.StringLiteral(key), setObjectExpression(variableObj)] : [t.StringLiteral(key)]
         ),
         t.Identifier("d"),
       ),
@@ -101,7 +101,7 @@ function reactPlugin (allTranslateWord, randomStr) {
           }
         },
         TemplateLiteral(path) {
-          if(path.node.quasis.every(word => !judgeChinese(word))) {
+          if(!path.node.quasis.every(word => !judgeChinese(word))) {
             path.skip();
             return
           }
@@ -143,9 +143,7 @@ function reactPlugin (allTranslateWord, randomStr) {
     };
   }
 
-  return {
-    plugin
-  }
+  return plugin
 }
 
 module.exports = reactPlugin
