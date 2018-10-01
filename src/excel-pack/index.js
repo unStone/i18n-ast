@@ -39,7 +39,6 @@ module.exports = function (option) {
       })
 
       const filesName = filesPath.map(filePath => filePath.split('/').pop() )
-      // https://segmentfault.com/a/1190000004395728
 
       var _headers = [].concat(['keys'], filesName)
       
@@ -57,21 +56,15 @@ module.exports = function (option) {
       // 计算出范围
       const ref = `A1:${EN[_headers.length - 1]}${[allKeys.length + 1]}`;
 
-      console.log('_headers', _headers, filesName)
-      console.log('everLanguageWords', everLanguageWords, sheet)
-      console.log('ref', ref)
-
       const workbook = {
         SheetNames: ['i18n-ast'],
         Sheets: {
           'i18n-ast': {
-            '!ref': ref, // 必须要有这个范围才能输出，否则导出的 excel 会是一个空表
+            '!ref': ref,
             ...sheet
           }
         }
       }
-
-      console.log('workbook', workbook)
 
       xlsx.writeFile(workbook, `${this.option.output}/collect.xlsx`);
     }
