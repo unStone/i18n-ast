@@ -63,13 +63,14 @@ module.exports = function (option) {
 
     start: function() {
       let allTranslateWords = {};
+      const outputMainLocalPath = `${this.option.output}/${this.option.mainLocal}.js`
 
       if(!this._existsSync(this.option.output)) {
         mkdirp(this.option.output)
       }
 
-      if(this._existsSync(`${this.option.output}/${this.option.mainJs}`)) {
-        Object.assign(allTranslateWords, this.getExistWords(`${this.option.output}/${this.option.mainJs}`));
+      if(this._existsSync(outputMainLocalPath)) {
+        Object.assign(allTranslateWords, this.getExistWords(outputMainLocalPath));
       }
 
       const translateFiles = this._getTranslateFiles()
@@ -80,7 +81,7 @@ module.exports = function (option) {
 
       const reorganizeContent = this.reorganize(allTranslateWords);
 
-      this.write(`${this.option.output}/${this.option.mainJs}`, reorganizeContent, { encoding: "utf-8" });
+      this.write(outputMainLocalPath, reorganizeContent, { encoding: "utf-8" });
     }
   }
   return collectAndWrite

@@ -31,7 +31,7 @@ module.exports = function (option) {
         const fileName = filePath.split('/').pop();
         const keyValues = this.getExistWords(filePath);
         everLanguageWords[fileName] = keyValues;
-        if(fileName === this.option.mainJs) {
+        if(fileName === this.option.mainLocal) {
           allKeys = Object.keys(keyValues)
         }
       })
