@@ -22,16 +22,14 @@ module.exports = function (option) {
     },
 
     start: function() {
-      const everLanguageWords = {};
       let allKeys = [];
       const sheet = {};
-
+      const everLanguageWords = {};
       const filesPath = file.getALayerFiles({ path: this.option.output });
-      
+
       filesPath.forEach(filePath => {
         const fileName = filePath.split('/').pop();
         const keyValues = this.getExistWords(filePath);
-
         everLanguageWords[fileName] = keyValues;
         if(fileName === this.option.mainJs) {
           allKeys = Object.keys(keyValues)

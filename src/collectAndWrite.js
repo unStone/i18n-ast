@@ -38,7 +38,7 @@ module.exports = function (option) {
       const output = translate({
         filePath,
         allTranslateWords,
-        randomStr: this.option.randomFuc || this._randomStr()
+        randomStr: this.option.randomFuc || this._randomStr
       })
       this.write(`${filePath}`, output.code, { encoding: "utf-8" })
       chalk.success(`${filePath} is success`)
@@ -48,7 +48,9 @@ module.exports = function (option) {
       let outputString = 'module.exports = {\n';
 
       Object.keys(allTranslateWords).forEach(word => {
-        outputString += `  '${allTranslateWords[word]}': '${word}',\n`
+        // TODO 单引号和双引号的一些问题
+        // word = word.replace(/\\'/g, '\'').replace(/\'/g, '\\\'')
+        outputString += `  '${allTranslateWords[word]}': \`${word}\`,\n`
       })
       
       outputString += '}\n'
