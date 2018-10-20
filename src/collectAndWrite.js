@@ -3,6 +3,7 @@ const mkdirp = require("mkdirp");
 const file = require('./file');
 const translate = require('./translate');
 const chalk = require('./chalk')
+const util = require('./util');
 
 module.exports = function (option) {
   const collectAndWrite = {
@@ -20,18 +21,18 @@ module.exports = function (option) {
     },
 
     getExistWords: function(existWordsPath) {
-      const defaultWords = {}
+      let defaultWords = {}
       let requireWords = {};
       try {
         requireWords = require(`${process.cwd()}/${existWordsPath}`);
-        Object.keys(requireWords).forEach(v => {
-          defaultWords[requireWords[v]] = v
-        })
+        defaultWords = util.invert(requireWords)
       } catch(e) {
-        console.log(e)
         // chalk.error(`${output}/zh_CN.js is not a module`)
       }
-      return defaultWords;
+      return {
+        valueKey: defaultWords,
+        keyValue: requireWords
+      };
     },
 
     collect: function(allTranslateWords, filePath) {
@@ -40,7 +41,7 @@ module.exports = function (option) {
         allTranslateWords,
         randomStr: this.option.randomFuc || this._randomStr
       })
-      this.write(`${filePath}`, output.code, { encoding: "utf-8" })
+      // this.write(`${filePath}`, output.code, { encoding: "utf-8" })
       chalk.success(`${filePath} is success`)
     },
 
@@ -63,14 +64,14 @@ module.exports = function (option) {
 
     start: function() {
       let allTranslateWords = {};
-      const outputMainLocalPath = `${this.option.output}/${this.option.mainLocal}.js`
+      const outputMainLocalPath = (localName) => `${this.option.output}/${localName}.js`
 
       if(!this._existsSync(this.option.output)) {
         mkdirp(this.option.output)
       }
 
-      if(this._existsSync(outputMainLocalPath)) {
-        Object.assign(allTranslateWords, this.getExistWords(outputMainLocalPath));
+      if(this._existsSync(outputMainLocalPath(this.option.mainLocal))) {
+        Object.assign(allTranslateWords, this.getExistWords(outputMainLocalPath(this.option.mainLocal)).valueKey);
       }
 
       const translateFiles = this._getTranslateFiles()
@@ -81,7 +82,18 @@ module.exports = function (option) {
 
       const reorganizeContent = this.reorganize(allTranslateWords);
 
-      this.write(outputMainLocalPath, reorganizeContent, { encoding: "utf-8" });
+      if(this.option.otherLocales) {
+        this.option.otherLocales.forEach((localName) => {
+          const path = outputMainLocalPath(localName);
+          const allWords = util.invert(JSON.parse(JSON.stringify(allTranslateWords)))
+          const existWords = this.getExistWords(path).keyValue;
+          Object.assign(allWords, existWords);
+
+          const content = this.reorganize(util.invert(allWords));
+          this.write(path, content, { encoding: "utf-8" });
+        })
+      }
+      this.write(outputMainLocalPath(this.option.mainLocal), reorganizeContent, { encoding: "utf-8" });
     }
   }
   return collectAndWrite

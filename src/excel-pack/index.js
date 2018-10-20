@@ -15,7 +15,7 @@ module.exports = function (option) {
       try {
         requireWords = require(`${process.cwd()}/${existWordsPath}`);
       } catch(e) {
-        console.log(e)
+        // console.log(e)
         // chalk.error(`${output}/zh_CN.js is not a module`)
       }
       return requireWords;
@@ -31,7 +31,7 @@ module.exports = function (option) {
         const fileName = filePath.split('/').pop();
         const keyValues = this.getExistWords(filePath);
         everLanguageWords[fileName] = keyValues;
-        if(fileName === this.option.mainLocal) {
+        if(fileName === `${this.option.mainLocal}.js`) {
           allKeys = Object.keys(keyValues)
         }
       })
