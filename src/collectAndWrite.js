@@ -41,7 +41,7 @@ module.exports = function (option) {
         allTranslateWords,
         randomStr: this.option.randomFuc || this._randomStr
       })
-      // this.write(`${filePath}`, output.code, { encoding: "utf-8" })
+      this.write(`${filePath}`, output.code, { encoding: "utf-8" })
       chalk.success(`${filePath} is success`)
     },
 
