@@ -1,4 +1,5 @@
 const fs = require('fs');
+const prettier = require("prettier");
 const babel = require("babel-core");
 const generator = require('babel-generator')
 
@@ -21,7 +22,9 @@ function translate ({filePath, option, allTranslateWords, randomStr}) {
     plugin]
   }
   const output = generator.default(babel.transformFileSync(filePath, option || transformOptions).ast);
-  return output;
+  return {
+    code: prettier.format(output.code, { parser: "babylon" })
+  };
 }
 
 module.exports = translate;

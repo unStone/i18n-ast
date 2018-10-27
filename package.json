@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node bin/index.js",
     "test-program": "node bin/index.js -e t -o u -x *-*.jsx -l a,b,c -p",
+    "ready": "chmod 777 ./back.sh && ./back.sh",
     "test": "jest --color"
   },
   "author": {
@@ -38,7 +39,8 @@
     "chalk": "^2.4.1",
     "commander": "^2.18.0",
     "glob": "^7.1.3",
-    "xlsx": "^0.14.0"
+    "xlsx": "^0.14.0",
+    "prettier": "^1.14.3"
   },
   "devDependencies": {
     "jest": "^23.6.0"

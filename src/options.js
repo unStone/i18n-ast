@@ -18,13 +18,11 @@ program.option('-p, --pack', '将翻译文件整理为 excel，需要配置"outp
 
 // 是否需要判断翻译目录
 const needJudgeEntry = function(program, options) {
-  console.log(program.pack, options.pack)
   return !program.pack && !options.pack
 }
 
 // 判断翻译目录是否有问题
 const isEntryError = function(program, options) {
-  console.log('needJudgeEntry(program, options)', needJudgeEntry(program, options))
   return needJudgeEntry(program, options) &&
         (!program.entry || program.entry === true) &&
         !options.entry 

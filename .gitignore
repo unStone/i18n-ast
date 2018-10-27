@@ -2,3 +2,5 @@
 .vscode
 /t
 /u
+/back
+back.sh
