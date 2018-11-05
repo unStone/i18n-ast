@@ -36,13 +36,15 @@ module.exports = function (option) {
     },
 
     collect: function(allTranslateWords, filePath) {
-      const output = translate({
+      const { isRewriting, code } = translate({
         filePath,
         allTranslateWords,
         randomStr: this.option.randomFuc || this._randomStr
       })
-      this.write(`${filePath}`, output.code, { encoding: "utf-8" })
-      chalk.success(`${filePath} is success`)
+      if(isRewriting) {
+        this.write(`${filePath}`, code, { encoding: "utf-8" })
+        chalk.success(`${filePath} is success`)
+      }
     },
 
     reorganize: function(allTranslateWords) {
