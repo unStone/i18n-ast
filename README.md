@@ -21,8 +21,13 @@ yarn add i18n-ast --dev
 输出的文件路径是必填的
 
 1. 利用命令行
+- 执行翻译命令
 ```sh
-  i18n-ast -e [path] -o [path] -x [path]
+  i18n-ast -e [path] -o [path] -x [path] -l [localeNames]
+```
+- 执行打包成 excel 命令
+```sh
+i18n-ast -o [path] -p
 ```
 
 2. 在根目录下新建配置文件 i18n-ast.config.js
@@ -33,7 +38,9 @@ module.exports = () => ({
    //排除的文件（类型是数组） 
   exclude: [],
   //可以自定义随机字符串，第一个参数是当前文件的路径
-  randomFuc: (filePath) => `${filePath.split('/').pop()}-${Math.random()}`
+  randomFuc: (filePath) => `${filePath.split('/').pop()}-${Math.random()}`,
+  locales: 'zh_CN,pt_PT,en_US'
+  // locales: ['zh_CN', 'pt_PT', 'en_US']
 })
 ```
 
