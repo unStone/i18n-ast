@@ -13,8 +13,9 @@ const judgeChinese = function(text) {
   return /[\u4e00-\u9fa5]/.test(text);
 }
 
-function reactPlugin (allTranslateWord, randomStr) {
+function reactPlugin (allTranslateWord, randomStr, arg) {
   function makeReplace({value, variableObj}) {
+    arg.translateWordsNum++;
     let key = randomStr();
     const val = value;
     if(allTranslateWord[val]) {
@@ -61,6 +62,13 @@ function reactPlugin (allTranslateWord, randomStr) {
   const plugin = function ({ types: t }) {
     return {
       visitor: {
+        ImportDeclaration(path) {
+          const { node } = path;
+          if (node.source.value === 'react-intl-universal') {
+            arg.hasImportModule = true;
+          }
+          path.skip();
+        },
         JSXText(path) {
           const { node } = path;
           if (judgeChinese(node.value)) {
