@@ -1,14 +1,19 @@
 const t = require('@babel/types');
 
+const replaceLineBreak = function (value) {
+  if(typeof value !== 'string') return value
+  return value.replace(/\n/g, ' ')
+}
+
+const baseType = function(v) {
+  return Object.prototype.toString.call(v)
+}
+
+const judgeChinese = function(text) {
+  return /[\u4e00-\u9fa5]/.test(text);
+}
+
 function reactPlugin (allTranslateWord, randomStr) {
-  function baseType (v) {
-    return Object.prototype.toString.call(v)
-  }
-
-  function judgeChinese(text) {
-    return /[\u4e00-\u9fa5]/.test(text);
-  }
-
   function makeReplace({value, variableObj}) {
     let key = randomStr();
     const val = value;
@@ -113,7 +118,7 @@ function reactPlugin (allTranslateWord, randomStr) {
           const variable = {}
           tempArr.forEach(function(t) {
             if(t.type === 'TemplateElement') {
-              v += `${t.value.cooked} `;
+              v += `${replaceLineBreak(t.value.cooked)} `;
               if(judgeChinese(t.value.cooked)) {
                 isreplace = true;
               }
