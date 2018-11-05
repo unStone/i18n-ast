@@ -23,7 +23,7 @@ function translate ({filePath, option, allTranslateWords, randomStr}) {
   }
   const output = generator.default(babel.transformFileSync(filePath, option || transformOptions).ast);
   return {
-    code: prettier.format(output.code, { parser: "babylon" })
+    code: prettier.format(output.code, { parser: "babylon", singleQuote: true })
   };
 }
 
