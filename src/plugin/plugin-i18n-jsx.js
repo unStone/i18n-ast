@@ -108,12 +108,15 @@ function reactPlugin (allTranslateWord, randomStr) {
           const tempArr = [].concat(path.node.quasis, path.node.expressions).sort(function(a,b){
             return a.start - b.start;
           })
-          let isreplace = true;
+          let isreplace = false;
           let v = '';
           const variable = {}
           tempArr.forEach(function(t) {
             if(t.type === 'TemplateElement') {
               v += `${t.value.cooked} `;
+              if(judgeChinese(t.value.cooked)) {
+                isreplace = true;
+              }
             } else if(t.type === 'Identifier') {
               variable[t.name] = t.name;
               v += `{${t.name}} `
