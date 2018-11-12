@@ -2,7 +2,7 @@ const fs = require('fs');
 const mkdirp = require("mkdirp");
 const file = require('./file');
 const translate = require('./translate');
-const chalk = require('./chalk')
+const chalk = require('./util/chalk')
 const util = require('./util');
 
 module.exports = function (option) {

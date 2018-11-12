@@ -4,6 +4,8 @@ const excelPack = require('./excel-pack')
 
 const option = parseArgv(process.argv);
 
+console.log('option', option)
+
 // 先收集再打包
 const queue = [{
   type: 'collectAndWrite',

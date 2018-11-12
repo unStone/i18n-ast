@@ -1,3 +1,5 @@
+const chalk = require('./chalk');
+
 const invert = function(obj) {
   var result = {};
   var keys = Object.keys(obj);
