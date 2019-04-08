@@ -126,13 +126,13 @@ function reactPlugin (allTranslateWord, randomStr, arg) {
           const variable = {}
           tempArr.forEach(function(t) {
             if(t.type === 'TemplateElement') {
-              v += `${replaceLineBreak(t.value.cooked)} `;
+              v += `${replaceLineBreak(t.value.cooked)}`;
               if(judgeChinese(t.value.cooked)) {
                 isreplace = true;
               }
             } else if(t.type === 'Identifier') {
               variable[t.name] = t.name;
-              v += `{${t.name}} `
+              v += `{${t.name}}`
             } else if(t.type === 'CallExpression') {
               // TODO
               isreplace = false;
