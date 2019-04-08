@@ -1,6 +1,6 @@
 {
   "name": "i18n-ast",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "",
   "main": "bin/index.js",
   "scripts": {
