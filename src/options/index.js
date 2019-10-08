@@ -24,7 +24,7 @@ module.exports = function parseArgv(args) {
   const programOption = program.opts();
   let configurationFileOptions = {};
 
-  const configPath = `${cwdPath}/${programOption.configPath || 'i18n-ast.config.js'}`
+  const configPath = `${cwdPath}/${programOption.config || 'i18n-ast.config.js'}`
 
    // 读取 i18n-ast.config.js 中设置的参数，然后并入 options 
   if(fs.existsSync(configPath)) {
