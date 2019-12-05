@@ -53,7 +53,8 @@ module.exports = function (option) {
       Object.keys(allTranslateWords).forEach(word => {
         // TODO 单引号和双引号的一些问题
         // word = word.replace(/\\'/g, '\'').replace(/\'/g, '\\\'')
-        outputString += `  '${allTranslateWords[word]}': \`${word}\`,\n`
+        const newWord = word.replace(/'/g, '\\\'');
+        outputString += `'${allTranslateWords[word]}': '${newWord}',\n`;
       })
       
       outputString += '}\n'
