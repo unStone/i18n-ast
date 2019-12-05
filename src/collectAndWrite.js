@@ -49,13 +49,24 @@ module.exports = function (option) {
 
     reorganize: function(allTranslateWords) {
       let outputString = 'module.exports = {\n';
+      
+      // 互换KEY VALUE
+      Object.keys(allTranslateWords)
+        .forEach(word => {
+          wordList[allTranslateWords[word]] = word;
+        })
 
-      Object.keys(allTranslateWords).forEach(word => {
-        // TODO 单引号和双引号的一些问题
-        // word = word.replace(/\\'/g, '\'').replace(/\'/g, '\\\'')
-        const newWord = word.replace(/'/g, '\\\'');
-        outputString += `'${allTranslateWords[word]}': '${newWord}',\n`;
-      })
+      /**
+       * 针对key值进行排序
+       * 为了方便比较（其实是公司不再返回excel而是返回json了，而返回的json是经过排序的）
+       * 我觉得挺好，也就学习了
+       * */ 
+      Object.keys(wordList)
+        .sort()
+        .forEach(key => {
+          const newWord = wordList[key].replace(/'/g, '\\\'');
+          outputString += `'${key}': '${newWord}',\n`;
+        })
       
       outputString += '}\n'
       return outputString
