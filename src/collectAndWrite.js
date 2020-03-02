@@ -49,6 +49,7 @@ module.exports = function (option) {
 
     reorganize: function(allTranslateWords) {
       let outputString = 'module.exports = {\n';
+      const wordList = {};
       
       // 互换KEY VALUE
       Object.keys(allTranslateWords)
