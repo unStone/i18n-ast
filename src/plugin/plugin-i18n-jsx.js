@@ -83,10 +83,20 @@ function reactPlugin (allTranslateWord, randomStr, arg) {
         CallExpression(path) {
           // 跳过 intl.get() 格式
           if (path.node.callee.type === "MemberExpression") {
-            if(path.node.callee.property.name === "d") {
-              path.skip()
-              return;
+            try{
+              if(path.node.callee.object.callee.object.name === 'intl' && path.node.callee.object.callee.property.name === 'get') {
+                const key = path.node.callee.object.arguments[0].value;
+                if(path.node.callee.property.name === "d") {
+                  // 已经转换成 intl.get().d() 格式
+                  const value = path.node.arguments[0].value
+                  // console.log(`"${key}": "${value}"`)
+                }
+              }
+            } catch(e) {
+              // console.log(e)
             }
+            path.skip()
+            return;
           }
         },
         StringLiteral(path) {
